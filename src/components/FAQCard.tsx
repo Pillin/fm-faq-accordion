@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import QuestionAnswer from "./QuestionAnswer";
+import useMediaQuery from "../hooks/useMediaQuery";
 import { IMG } from "./Image";
 import { H1 } from "./Typography";
 
@@ -10,9 +11,10 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 1000px;
+  max-width: 800px;
   width: 100%;
-  max-height: 800px;
+  height: 100%;
+  max-height: 640px;
   border-radius: 20px;
   padding: 32px 16px;
   @media (min-width: 769px) {
@@ -26,21 +28,12 @@ const Content = styled.section`
   height: 500px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-`;
-
-const IMGIllustration = {
-  mobile: "/images/illustration-woman-online-mobile.svg",
-  desktop: "/images/illustration-woman-online-desktop.svg",
-  alt: "illustration woman",
-  style: {
-    height: "400px",
-    left: "-125px",
-    "@media (min-width: 769px)": {
-      height: "400px"
-    }
+  position: relative;
+  left: 0px;
+  @media (min-width: 769px) {
+    left: -140px;
   }
-};
+`;
 
 const FAQList = [
   {
@@ -70,11 +63,25 @@ const FAQList = [
   }
 ];
 
+const IMGIllustration = {
+  mobile: "/images/illustration-woman-online-mobile.svg",
+  desktop: "/images/illustration-woman-online-desktop.svg",
+  alt: "illustration woman"
+};
+
 const FAQCard = () => {
   const [openIndex, setOpenIndex] = React.useState(-1);
+  const isMobile = useMediaQuery("(max-width: 769px)");
+
+  const style = {
+    position: "relative",
+    height: isMobile ? "400px" : "400px",
+    left: isMobile ? "0px" : " -150px"
+  } as React.CSSProperties;
+
   return (
     <Container>
-      <IMG {...IMGIllustration} />
+      <IMG {...IMGIllustration} style={style} />
       <Content>
         <H1>FAQ</H1>
         {FAQList.map((elem, index) => (

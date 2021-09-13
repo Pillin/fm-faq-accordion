@@ -14,7 +14,7 @@ export const H1 = styled.h1`
   margin: 4px 0px;
   font-size: 2.7rem;
   letter-spacing: 0.5rem;
-  padding: 32px 0px;
+  padding: 16px 0px;
 `;
 export const H2 = styled.h2`
   color: hsl(0, 36%, 70%);

@@ -8,9 +8,6 @@ const Container = styled.section`
   border-color: hsl(240, 5%, 91%);
   border-width: 0px 0px 1px 0px;
   width: 100%;
-  @media (min-width: 769px) {
-    width: 350px;
-  }
 `;
 
 const QuestionTitle = styled.section`
@@ -26,12 +23,16 @@ const QuestionTitle = styled.section`
 `;
 
 const Answer = styled.section<{ active: boolean }>`
-  padding: 16px 0px;
-  display: ${({ active }) => (active ? "inline" : "none")};
+  padding: ${({ active }) => (active ? "16px 0px" : "0px")};
+  visibility: ${({ active }) => (active ? "visible" : "hidden")};
+  opacity: ${({ active }) => (active ? "1" : "0")};
+  max-height: ${({ active }) => (active ? "200px" : "0px")};
   width: 100%;
   @media (min-width: 769px) {
     width: 350px;
   }
+  transition-delay: 0.5s;
+  transition: visibility 0.2s, opacity 1s linear, max-height 0.5s linear 0s;
 `;
 
 const QuestionAnswer = (props: {
