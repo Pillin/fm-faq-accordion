@@ -16,8 +16,9 @@ const QuestionTitle = styled.section`
   justify-content: space-between;
   align-items: center;
   padding: 12px 0px;
-  width: 100%;
+  width: 90vw;
   @media (min-width: 769px) {
+    min-width: 350px;
     width: 350px;
   }
 `;
@@ -27,20 +28,15 @@ const Answer = styled.section<{ active: boolean }>`
   visibility: ${({ active }) => (active ? "visible" : "hidden")};
   opacity: ${({ active }) => (active ? "1" : "0")};
   max-height: ${({ active }) => (active ? "200px" : "0px")};
-  width: 100%;
+  transition-delay: 0.5s;
+  width: 90vw;
+  transition: visibility 0.2s, opacity 1s ease, max-height 0.5s ease 0s;
   @media (min-width: 769px) {
     width: 350px;
   }
-  transition-delay: 0.5s;
-  transition: visibility 0.2s, opacity 1s linear, max-height 0.5s linear 0s;
 `;
 
-const QuestionAnswer = (props: {
-  question: string;
-  answer: string;
-  active: boolean;
-  onClick: () => void;
-}) => {
+const QuestionAnswer = (props: { question: string; answer: string; active: boolean; onClick: () => void }) => {
   return (
     <Container>
       <QuestionTitle onClick={props.onClick}>
@@ -52,7 +48,7 @@ const QuestionAnswer = (props: {
         )}
       </QuestionTitle>
       <Answer active={props.active}>
-        <P>{props.answer}</P>
+        <P>{props.active ? props.answer : ""}</P>
       </Answer>
     </Container>
   );

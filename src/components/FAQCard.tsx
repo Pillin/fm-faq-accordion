@@ -10,17 +10,18 @@ const Container = styled.section`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   max-width: 800px;
   width: 100%;
   height: 100%;
-  max-height: 640px;
   border-radius: 20px;
   padding: 32px 16px;
   @media (min-width: 769px) {
     padding: 32px;
     flex-wrap: wrap;
     max-height: 600px;
+    justify-content: center;
   }
 `;
 
@@ -38,28 +39,23 @@ const Content = styled.section`
 const FAQList = [
   {
     question: "How many team members can I invite?",
-    answer:
-      "No more than 2GB. All files in your account must fit your allotted storage space."
+    answer: "No more than 2GB. All files in your account must fit your allotted storage space."
   },
   {
     question: "What is the maximum file upload size?",
-    answer:
-      "No more than 2GB. All files in your account must fit your allotted storage space."
+    answer: "No more than 2GB. All files in your account must fit your allotted storage space."
   },
   {
     question: "How do I reset my password?",
-    answer:
-      "No more than 2GB. All files in your account must fit your allotted storage space."
+    answer: "No more than 2GB. All files in your account must fit your allotted storage space."
   },
   {
     question: "Can I cancel my subscription?",
-    answer:
-      "No more than 2GB. All files in your account must fit your allotted storage space."
+    answer: "No more than 2GB. All files in your account must fit your allotted storage space."
   },
   {
     question: "Do you provide additional support?",
-    answer:
-      "No more than 2GB. All files in your account must fit your allotted storage space."
+    answer: "No more than 2GB. All files in your account must fit your allotted storage space."
   }
 ];
 
@@ -67,6 +63,12 @@ const IMGIllustration = {
   mobile: "/images/illustration-woman-online-mobile.svg",
   desktop: "/images/illustration-woman-online-desktop.svg",
   alt: "illustration woman"
+};
+
+const IMGIllustrationBox = {
+  mobile: "/images/illustration-box-desktop.svg",
+  desktop: "/images/illustration-box-desktop.svg",
+  alt: "illustration box"
 };
 
 const FAQCard = () => {
@@ -79,9 +81,18 @@ const FAQCard = () => {
     left: isMobile ? "0px" : " -150px"
   } as React.CSSProperties;
 
+  const styleBox = {
+    position: "absolute",
+    height: "200px",
+    left: openIndex ? " -140px" : "-100px",
+    display: isMobile ? "none" : "inline",
+    transition: "left 1s ease 0s"
+  } as React.CSSProperties;
+
   return (
     <Container>
       <IMG {...IMGIllustration} style={style} />
+      <IMG {...IMGIllustrationBox} style={styleBox} />
       <Content>
         <H1>FAQ</H1>
         {FAQList.map((elem, index) => (

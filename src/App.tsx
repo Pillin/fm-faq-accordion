@@ -10,11 +10,7 @@ const Container = styled.section`
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(
-    180deg,
-    hsl(273, 75%, 66%) 0%,
-    hsl(240, 73%, 65%) 100%
-  );
+  background: linear-gradient(180deg, hsl(273, 75%, 66%) 0%, hsl(240, 73%, 65%) 100%);
 `;
 
 export default function App() {

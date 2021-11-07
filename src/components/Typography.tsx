@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
 
 export const P = styled.p<{ active?: boolean }>`
-  color: ${({ active }) =>
-    active ? "hsl(237, 12%, 33%)" : "hsl(240, 6%, 50%)"}
+  color: ${({ active }) => (active ? "hsl(237, 12%, 33%)" : "hsl(240, 6%, 50%)")}
   font-weight: 300;
   margin: 0px;
 `;
